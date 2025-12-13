@@ -1,0 +1,632 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{472A4EC9-C81A-45B9-987E-7064D2FB8BB4}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KurumsalWeb</RootNamespace>
+    <AssemblyName>KurumsalWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44359</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.3.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.3.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AdminLayout\.gitattributes" />
+    <Content Include="Content\AdminLayout\.gitignore" />
+    <Content Include="Content\AdminLayout\dist\assets\img\AdminLTEFullLogo.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\AdminLTELogo.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\avatar.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\avatar2.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\avatar3.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\avatar4.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\avatar5.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\boxed-bg.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\boxed-bg.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\american-express.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\cirrus.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\mastercard.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\paypal.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\paypal2.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\credit\visa.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\default-150x150.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\icons.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\photo1.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\photo2.png" />
+    <Content Include="Content\AdminLayout\dist\assets\img\photo3.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\photo4.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\prod-1.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\prod-2.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\prod-3.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\prod-4.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\prod-5.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user1-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user2-160x160.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user3-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user4-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user5-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user6-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user7-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\assets\img\user8-128x128.jpg" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.css" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.min.css" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.rtl.css" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.rtl.min.css" />
+    <Content Include="Content\AdminLayout\dist\docs\browser-support.html" />
+    <Content Include="Content\AdminLayout\dist\docs\color-mode.html" />
+    <Content Include="Content\AdminLayout\dist\docs\components\main-header.html" />
+    <Content Include="Content\AdminLayout\dist\docs\components\main-sidebar.html" />
+    <Content Include="Content\AdminLayout\dist\docs\faq.html" />
+    <Content Include="Content\AdminLayout\dist\docs\how-to-contribute.html" />
+    <Content Include="Content\AdminLayout\dist\docs\introduction.html" />
+    <Content Include="Content\AdminLayout\dist\docs\javascript\treeview.html" />
+    <Content Include="Content\AdminLayout\dist\docs\layout.html" />
+    <Content Include="Content\AdminLayout\dist\docs\license.html" />
+    <Content Include="Content\AdminLayout\dist\examples\lockscreen.html" />
+    <Content Include="Content\AdminLayout\dist\examples\login-v2.html" />
+    <Content Include="Content\AdminLayout\dist\examples\login.html" />
+    <Content Include="Content\AdminLayout\dist\examples\register-v2.html" />
+    <Content Include="Content\AdminLayout\dist\examples\register.html" />
+    <Content Include="Content\AdminLayout\dist\forms\general.html" />
+    <Content Include="Content\AdminLayout\dist\generate\theme.html" />
+    <Content Include="Content\AdminLayout\dist\index.html" />
+    <Content Include="Content\AdminLayout\dist\index2.html" />
+    <Content Include="Content\AdminLayout\dist\index3.html" />
+    <Content Include="Content\AdminLayout\dist\js\adminlte.js" />
+    <Content Include="Content\AdminLayout\dist\js\adminlte.min.js" />
+    <Content Include="Content\AdminLayout\dist\layout\collapsed-sidebar.html" />
+    <Content Include="Content\AdminLayout\dist\layout\fixed-complete.html" />
+    <Content Include="Content\AdminLayout\dist\layout\fixed-footer.html" />
+    <Content Include="Content\AdminLayout\dist\layout\fixed-header.html" />
+    <Content Include="Content\AdminLayout\dist\layout\fixed-sidebar.html" />
+    <Content Include="Content\AdminLayout\dist\layout\layout-custom-area.html" />
+    <Content Include="Content\AdminLayout\dist\layout\layout-rtl.html" />
+    <Content Include="Content\AdminLayout\dist\layout\logo-switch.html" />
+    <Content Include="Content\AdminLayout\dist\layout\sidebar-mini.html" />
+    <Content Include="Content\AdminLayout\dist\layout\unfixed-sidebar.html" />
+    <Content Include="Content\AdminLayout\dist\tables\simple.html" />
+    <Content Include="Content\AdminLayout\dist\UI\general.html" />
+    <Content Include="Content\AdminLayout\dist\UI\icons.html" />
+    <Content Include="Content\AdminLayout\dist\UI\timeline.html" />
+    <Content Include="Content\AdminLayout\dist\widgets\cards.html" />
+    <Content Include="Content\AdminLayout\dist\widgets\info-box.html" />
+    <Content Include="Content\AdminLayout\dist\widgets\small-box.html" />
+    <Content Include="Content\AdminLayout\eslint.config.js" />
+    <Content Include="Content\AdminLayout\index.html" />
+    <Content Include="Content\AdminLayout\src\assets\img\AdminLTEFullLogo.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\AdminLTELogo.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\avatar.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\avatar2.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\avatar3.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\avatar4.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\avatar5.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\boxed-bg.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\boxed-bg.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\american-express.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\cirrus.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\mastercard.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\paypal.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\paypal2.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\credit\visa.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\default-150x150.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\icons.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\photo1.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\photo2.png" />
+    <Content Include="Content\AdminLayout\src\assets\img\photo3.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\photo4.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\prod-1.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\prod-2.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\prod-3.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\prod-4.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\prod-5.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user1-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user2-160x160.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user3-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user4-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user5-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user6-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user7-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\assets\img\user8-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\config\assets.config.mjs" />
+    <Content Include="Content\AdminLayout\src\config\astro.config.mjs" />
+    <Content Include="Content\AdminLayout\src\config\postcss.config.mjs" />
+    <Content Include="Content\AdminLayout\src\config\rollup.config.js" />
+    <Content Include="Content\AdminLayout\src\html\.prettierrc.js" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\AdminLTEFullLogo.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\AdminLTELogo.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\avatar.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\avatar2.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\avatar3.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\avatar4.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\avatar5.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\boxed-bg.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\boxed-bg.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\american-express.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\cirrus.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\mastercard.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\paypal.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\paypal2.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\credit\visa.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\default-150x150.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\icons.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\photo1.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\photo2.png" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\photo3.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\photo4.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\prod-1.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\prod-2.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\prod-3.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\prod-4.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\prod-5.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user1-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user2-160x160.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user3-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user4-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user5-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user6-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user7-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\assets\img\user8-128x128.jpg" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.css" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.min.css" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.rtl.css" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.rtl.min.css" />
+    <Content Include="Content\AdminLayout\src\html\public\js\adminlte.js" />
+    <Content Include="Content\AdminLayout\src\html\public\js\adminlte.min.js" />
+    <Content Include="Content\AdminLayout\src\utils\index.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Content\AdminLayout\.browserslistrc" />
+    <Content Include="Content\AdminLayout\.bundlewatch.config.json" />
+    <Content Include="Content\AdminLayout\.editorconfig" />
+    <Content Include="Content\AdminLayout\.eslintignore" />
+    <Content Include="Content\AdminLayout\.eslintrc.json" />
+    <Content Include="Content\AdminLayout\.github\codeql\codeql-config.yml" />
+    <Content Include="Content\AdminLayout\.github\CONTRIBUTING.md" />
+    <Content Include="Content\AdminLayout\.github\dependabot.yml" />
+    <Content Include="Content\AdminLayout\.github\FUNDING.yml" />
+    <Content Include="Content\AdminLayout\.github\ISSUE_TEMPLATE\bug-report-for-adminlte-v3.1-x.md" />
+    <Content Include="Content\AdminLayout\.github\ISSUE_TEMPLATE\feature-request-for-adminlte-v4-x.md" />
+    <Content Include="Content\AdminLayout\.github\workflows\bundlewatch.yml" />
+    <Content Include="Content\AdminLayout\.github\workflows\codeql.yml" />
+    <Content Include="Content\AdminLayout\.github\workflows\docs.yml" />
+    <Content Include="Content\AdminLayout\.github\workflows\lint.yml" />
+    <Content Include="Content\AdminLayout\.github\workflows\node-sass.yml" />
+    <Content Include="Content\AdminLayout\.github\workflows\release.yml" />
+    <Content Include="Content\AdminLayout\.gitpod.yml" />
+    <Content Include="Content\AdminLayout\.lgtm.yml" />
+    <Content Include="Content\AdminLayout\.npmignore" />
+    <Content Include="Content\AdminLayout\.prettierrc" />
+    <Content Include="Content\AdminLayout\.stylelintignore" />
+    <Content Include="Content\AdminLayout\.stylelintrc.json" />
+    <Content Include="Content\AdminLayout\ACCESSIBILITY-COMPLIANCE.md" />
+    <Content Include="Content\AdminLayout\CHANGELOG.md" />
+    <Content Include="Content\AdminLayout\CODE_OF_CONDUCT.md" />
+    <Content Include="Content\AdminLayout\composer.json" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.css.map" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.min.css.map" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.rtl.css.map" />
+    <Content Include="Content\AdminLayout\dist\css\adminlte.rtl.min.css.map" />
+    <Content Include="Content\AdminLayout\dist\js\adminlte.js.map" />
+    <Content Include="Content\AdminLayout\dist\js\adminlte.min.js.map" />
+    <Content Include="Content\AdminLayout\LICENSE" />
+    <Content Include="Content\AdminLayout\package-lock.json" />
+    <Content Include="Content\AdminLayout\package.json" />
+    <Content Include="Content\AdminLayout\README 2.md" />
+    <Content Include="Content\AdminLayout\README.md" />
+    <Content Include="Content\AdminLayout\src\html\.eslintrc.json" />
+    <Content Include="Content\AdminLayout\src\html\.tsconfig.json" />
+    <Content Include="Content\AdminLayout\src\html\components\dashboard\_footer.astro" />
+    <Content Include="Content\AdminLayout\src\html\components\dashboard\_sidenav.astro" />
+    <Content Include="Content\AdminLayout\src\html\components\dashboard\_topbar.astro" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\browser-support.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\color-mode.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\components\main-header.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\components\main-sidebar.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\faq.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\how-to-contribute.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\introduction.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\docs\license.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\javascript\treeview.mdx" />
+    <Content Include="Content\AdminLayout\src\html\components\_head.astro" />
+    <Content Include="Content\AdminLayout\src\html\components\_scripts.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\browser-support.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\color-mode.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\components\main-header.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\components\main-sidebar.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\faq.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\how-to-contribute.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\introduction.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\javascript\treeview.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\layout.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\docs\license.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\examples\lockscreen.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\examples\login-v2.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\examples\login.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\examples\register-v2.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\examples\register.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\forms\general.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\generate\theme.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\index.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\index2.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\index3.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\collapsed-sidebar.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\fixed-complete.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\fixed-footer.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\fixed-header.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\fixed-sidebar.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\layout-custom-area.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\layout-rtl.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\logo-switch.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\sidebar-mini.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\layout\unfixed-sidebar.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\tables\simple.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\UI\general.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\UI\icons.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\UI\timeline.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\widgets\cards.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\widgets\info-box.astro" />
+    <Content Include="Content\AdminLayout\src\html\pages\widgets\small-box.astro" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.css.map" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.min.css.map" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.rtl.css.map" />
+    <Content Include="Content\AdminLayout\src\html\public\css\adminlte.rtl.min.css.map" />
+    <Content Include="Content\AdminLayout\src\html\public\js\adminlte.js.map" />
+    <Content Include="Content\AdminLayout\src\html\public\js\adminlte.min.js.map" />
+    <Content Include="Content\AdminLayout\src\scss\adminlte.scss" />
+    <Content Include="Content\AdminLayout\src\scss\mixins\_animations.scss" />
+    <Content Include="Content\AdminLayout\src\scss\mixins\_scrollbar.scss" />
+    <Content Include="Content\AdminLayout\src\scss\pages\_lockscreen.scss" />
+    <Content Include="Content\AdminLayout\src\scss\pages\_login_and_register.scss" />
+    <Content Include="Content\AdminLayout\src\scss\parts\_components.scss" />
+    <Content Include="Content\AdminLayout\src\scss\parts\_core.scss" />
+    <Content Include="Content\AdminLayout\src\scss\parts\_extra-components.scss" />
+    <Content Include="Content\AdminLayout\src\scss\parts\_miscellaneous.scss" />
+    <Content Include="Content\AdminLayout\src\scss\parts\_pages.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_accessibility.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-content.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-footer.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-header.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-main.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-sidebar.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_app-wrapper.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_bootstrap-variables.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_callouts.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_cards.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_compact-mode.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_direct-chat.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_docs.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_dropdown.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_info-box.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_miscellaneous.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_mixins.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_progress-bars.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_root.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_small-box.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_table.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_timeline.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_toasts.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_variables-dark.scss" />
+    <Content Include="Content\AdminLayout\src\scss\_variables.scss" />
+    <Content Include="Content\AdminLayout\tsconfig.json" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Blog.cs" />
+    <Compile Include="Models\Hakkimizda.cs" />
+    <Compile Include="Models\Hizmet.cs" />
+    <Compile Include="Models\iletisim.cs" />
+    <Compile Include="Models\Kategori.cs" />
+    <Compile Include="Models\Kimlik.cs" />
+    <Compile Include="Models\KurumsalDB.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_SiteLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Content\AdminLayout\src\html\env.d.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\accessibility.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\adminlte.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\card-widget.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\direct-chat.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\fullscreen.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\layout.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\push-menu.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\treeview.ts" />
+    <TypeScriptCompile Include="Content\AdminLayout\src\ts\util\index.ts" />
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53198</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44359/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
