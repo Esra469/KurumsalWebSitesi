@@ -1,5 +1,6 @@
 ﻿
 using KurumsalWeb.Models;
+using KurumsalWeb.Models.DataContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace KurumsalWeb.Controllers
     public class AdminController : Controller
     {
         //Veri tabanına erişmek için bunu kullacağız
-        KurumsalDB db=new KurumsalDB();
+       KurumsalDBContext db=new KurumsalDBContext();
+
         // GET: Admin
         public ActionResult Index()
         {
-            var sorgu = db.Kategoris.ToList();
-            return View(sorgu);
+        var sorgu=db.Kategori.ToList();
+           return View(sorgu);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿<!--Admin sayfasnın görüntülendiği yer-->
-
-@model IEnumerable<KurumsalWeb.Models.Kategori> 
+@model IEnumerable<KurumsalWeb.Models.Model.Kategori>
 @{
     ViewBag.Title = "Admin Ana Sayfa";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,9 +8,9 @@
 
 @foreach (var item in Model)
 {
-    <li>@item.KategoriAd</li>
+    //Bu şekidle de verileri çekebiliyorum
+    <li>@item.KategoriAd- @item.Aciklama</li>
 }
-
 <div class="app-wrapper">
     <!--begin::Header-->
     <nav class="app-header navbar navbar-expand bg-body">

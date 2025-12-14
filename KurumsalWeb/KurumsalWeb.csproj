@@ -541,15 +541,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\Hakkimizda.cs" />
-    <Compile Include="Models\Hizmet.cs" />
-    <Compile Include="Models\iletisim.cs" />
-    <Compile Include="Models\Kategori.cs" />
-    <Compile Include="Models\Kimlik.cs" />
-    <Compile Include="Models\KurumsalDB.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DataContext\KurumsalDBContext.cs" />
+    <Compile Include="Models\Model\Admin.cs" />
+    <Compile Include="Models\Model\Blog.cs" />
+    <Compile Include="Models\Model\Hakkimizda.cs" />
+    <Compile Include="Models\Model\Hizmet.cs" />
+    <Compile Include="Models\Model\iletisim.cs" />
+    <Compile Include="Models\Model\Kategori.cs" />
+    <Compile Include="Models\Model\Kimlik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
