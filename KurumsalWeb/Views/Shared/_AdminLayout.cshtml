@@ -12,7 +12,7 @@
     <!-- Primary Meta Tags -->
     <meta name="title" content="AdminLTE v4 | Dashboard" />
     <meta name="author" content="ColorlibHQ" />
-   
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
@@ -32,12 +32,17 @@
           href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
           integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
           crossorigin="anonymous" />
+    <!---  ----------------------------------------------------------------------------  -->
 
+    <script src="~/Content/ckeditor/ckeditor.js"></script> 
+    <link href="~/Content/ckeditor/contents.css" rel="stylesheet" />
 </head>
 
 <body class="layout-fixed sidebar-expand-lg sidebar-open bg-body-tertiary">
     <!--begin::App Wrapper-->
-    @RenderBody()
+    
+    @RenderBody()  
+       
     <!--end::App Wrapper-->
 
     <!--begin::Script-->
@@ -46,7 +51,7 @@
             crossorigin="anonymous"></script>
     <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
     <script src="~/Scripts/popper.min.js"></script> 
-    crossorigin="anonymous"></script>
+    <script>crossorigin="anonymous"></script>
     <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
             crossorigin="anonymous"></script>
