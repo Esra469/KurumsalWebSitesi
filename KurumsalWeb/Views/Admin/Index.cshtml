@@ -5,12 +5,6 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-@foreach (var item in Model)
-{
-    //Bu şekidle de verileri çekebiliyorum
-    <li>@item.KategoriAd- @item.Aciklama</li>
-}
 <div class="app-wrapper">
     <!--begin::Header-->
     <nav class="app-header navbar navbar-expand bg-body">
@@ -267,6 +261,7 @@
                             <p>Theme Generate</p>
                         </a>
                     </li>
+                   
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon bi bi-box-seam-fill"></i>
@@ -295,6 +290,22 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Kimlik/Index" class="nav-link">
+                            <i class="nav-icon bi bi-palette"></i>
+                            <p>
+                                Site Kimlik
+                            </p>
+                        </a>
+                    </li>
+                      <li class="nav-item">
+                        <a href="/Hakkimizda/Index" class="nav-link">
+                            <i class="nav-icon bi bi-palette"></i>
+                            <p>
+                                Hakkimizda
+                            </p>
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
