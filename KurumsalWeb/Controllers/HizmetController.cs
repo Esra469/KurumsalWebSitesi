@@ -32,11 +32,8 @@ namespace KurumsalWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 if (ResimURL != null)
                 {
-                   
-          
                     WebImage img = new WebImage(ResimURL.InputStream);
                     FileInfo imginfo = new FileInfo(ResimURL.FileName);
 
