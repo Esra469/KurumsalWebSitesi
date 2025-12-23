@@ -1,0 +1,75 @@
+﻿
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hizmet Ekle</h2>
+
+
+<div class="card card-info card-outline mb-4">
+    <div class="form>
+        <form class="form-validate form-horizontal" id="feedback_form" method="post" action="/Hizmet/Create" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Başlık<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <input class="form-control" id="Baslik" name="Baslik" minlength="5" type="text" required />
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Açıklama<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <input class="form-control" id="Aciklama" name="Aciklama" minlength="5" type="text" required />
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Resim</label>
+                <div class="col-lg-10">
+                    <input type="file" class="form-control" name="ResimURL" accept=".jpg,.png,.jpeg" />
+
+                </div>
+
+            </div>
+            <div class="form-group">
+
+
+                <div class="card-footer">
+                    <button class="btn btn-info" type="submit">Submit form</button>
+                    <button class="btn btn-info" type="button"><a href="/Hizmet/Index">İptal</a></button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict';
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach((form) => {
+                form.addEventListener(
+                    'submit',
+                    (event) => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        form.classList.add('was-validated');
+                    },
+                    false,
+                );
+            });
+        })();
+    </script>
+</div>
