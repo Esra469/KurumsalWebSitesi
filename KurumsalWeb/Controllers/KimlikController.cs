@@ -67,7 +67,7 @@ namespace KurumsalWeb.Controllers
                     img.Resize(300, 200);
                     img.Save("~/Uploads/Kimlik/" + logoname);
 
-                    k.LoginURL = "Uploads/Kimlik/" + logoname;
+                    k.LoginURL = "/Uploads/Kimlik/" + logoname;
                     
                 }
 
