@@ -9,7 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;//Her seferinde add migation yapmak lazım -> false olursa /true olma durumunda sadece update diyeceğzi
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(KurumsalWeb.Models.DataContext.KurumsalDBContext context)
