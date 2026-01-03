@@ -22,9 +22,7 @@ namespace KurumsalWeb.Controllers
         }
         public ActionResult SliderPartial()
         {
-            var veriler = db.Slider
-                    .OrderByDescending(x => x.SliderId) 
-                    .ToList();
+            var veriler = db.Slider.OrderByDescending(x => x.SliderId).ToList();
 
             return View(veriler);//bu şekidle slider tablosu bize gelmiş olur
         }
