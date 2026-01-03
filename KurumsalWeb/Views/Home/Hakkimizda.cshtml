@@ -1,0 +1,28 @@
+﻿@model KurumsalWeb.Models.Model.Hakkimizda 
+
+@*Tek bir şey gelecekse bu şekilde belirtilir. liste döncekese enumerable yazılr*@
+
+
+    @{
+        ViewBag.Title = "Hakkımızda";
+        Layout = "~/Views/Shared/_SiteLayout.cshtml";
+    }
+
+<div class="container">
+    <div class="page-title dark-background">
+        <div class="container position-relative">
+            <h1>Hakkımızda</h1>
+            <p>
+            @Html.Raw(Model.Acıklama)
+            </p>
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="/Home/Index/">Home</a></li>
+                    <li class="current">About</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+   
+

@@ -9,14 +9,12 @@ namespace KurumsalWeb.Controllers
 {
     public class HomeController : Controller
     {
-        private  KurumsalDBContext db=new KurumsalDBContext();
+        private KurumsalDBContext db = new KurumsalDBContext();
         // GET: Home
         public ActionResult Index()
         {
             ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
-            ViewBag.İletisim=db.iletisim.SingleOrDefault();
-
-            ViewBag.Blog = db.Blog.OrderByDescending(x => x.BlogId).ToList();
+            
 
             return View();
         }
@@ -30,6 +28,21 @@ namespace KurumsalWeb.Controllers
         {
             return View(db.Hizmet.ToList());
         }
+        public ActionResult Hakkimizda()
+        {
+            return View(db.Hakkimizda.SingleOrDefault());
+        
+        }
       
-    }
+
+        public ActionResult FooterPartial()
+        {
+
+            ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
+            var iletisim = db.iletisim.FirstOrDefault();//model olarak alacağımız için viewbag olarak belirtemeyiz.
+
+            ViewBag.Blog = db.Blog.OrderByDescending(x => x.BlogId).ToList();
+            return PartialView(iletisim);
+        }
+    }  
 }
