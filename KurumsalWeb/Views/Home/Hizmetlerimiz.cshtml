@@ -36,15 +36,18 @@
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
 
+
+            @*Şimdilik filtreleme yapmıyor*@ 
+
                 @foreach (var item in Model)
                 {
                     <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
                         <div class="portfolio-content h-100">
                             <img src="@item.ResimURL" class="img-fluid" alt="@item.Baslik">
                             <div class="portfolio-info">
-                                <h4>Books 1</h4>
+                                <h4>@item.Baslik</h4>
                                 <p>@item.Aciklama</p>
-                                <a href="/Content/SiteLayout/assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                                <a href="@item.ResimURL" title="@item.Baslik" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                                 <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                             </div>
                         </div>
