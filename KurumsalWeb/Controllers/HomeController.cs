@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Web;
+using System.Web.Helpers;
+using System.Web.Management;
 using System.Web.Mvc;
 
 namespace KurumsalWeb.Controllers
@@ -38,6 +42,50 @@ namespace KurumsalWeb.Controllers
             return View(db.Hizmet.ToList().OrderByDescending(x=>x.HizmetId));
         }
 
+        public ActionResult Iletisim()
+        {
+            return View(db.iletisim.SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult Iletisim(string adsoyad=null,string email=null,string konu=null,string mesaj=null)
+        {
+            //Bu uyarıları ayrıca görünmesi için bunların iletişim.cshtml kısmında da tanımlanması gerekiyor.
+                if (adsoyad != null && email != null)
+                {
+                    try
+                    {
+                       
+                        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                        client.EnableSsl = true; // Güvenli bağlantı
+
+                        client.Credentials = new NetworkCredential("mailadresi@gmail.com", "16hanelikyenisifre");
+
+                        MailMessage mail = new MailMessage();
+                        mail.From = new MailAddress("mailadresi@gmail.com", "Site İletişim Formu"); // Kimden gidiyor
+                        mail.To.Add("mailadresi@gmail.com"); // Kime gidecek (Yine kendimize gönderiyoruz)
+                        mail.Subject = konu + " - " + adsoyad; // Mail Başlığı
+                        mail.IsBodyHtml = true;
+                        mail.Body = $"Gönderen: {adsoyad} ({email}) <br/> Mesaj: {mesaj}";
+
+                        client.Send(mail);
+
+                        ViewBag.Uyari = "Mesajınız başarıyla gönderildi.";
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.Uyari = "Hata oluştu: " + ex.Message;
+                    Console.WriteLine("hata oluştu") ;
+                    }
+                }
+                else
+                {
+                    ViewBag.Uyari = "Lütfen tüm alanları doldurunuz.";
+                }
+
+                return View();
+            
+        }
         public ActionResult FooterPartial()
         {
 
@@ -47,5 +95,6 @@ namespace KurumsalWeb.Controllers
             ViewBag.Blog = db.Blog.OrderByDescending(x => x.BlogId).ToList();
             return PartialView(iletisim);
         }
+
     }  
 }

@@ -35,18 +35,19 @@
                 {
                    
                         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-item item-cyan position-relative">
+                            <div class="service-item item-cyan position-relative h-100 d-flex flex-column">
 
                                 <div class="icon">
                                     <i class="bi bi-activity"></i>
                                 </div>
+
                                 <h3>@item.Baslik</h3>
-                                 
-                                <div class="service-image">
-                                    <img src="@item.ResimURL" alt="@item.Baslik" />
+
+                                <div class="service-image mb-3" style="width: 100%; height: 200px; overflow: hidden; border-radius: 8px;">
+                                    <img src="@item.ResimURL" alt="@item.Baslik" style="width: 100%; height: 100%; object-fit: cover;" />
                                 </div>
 
-                                <h3>@item.Aciklama</h3>
+                                <p class="flex-grow-1">@item.Aciklama</p>
 
                                 <a href="@item.ResimURL" class="stretched-link"></a>
 
