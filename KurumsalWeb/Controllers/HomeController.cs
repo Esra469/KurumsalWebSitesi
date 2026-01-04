@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Management;
 using System.Web.Mvc;
+using System.EnterpriseServices.Internal;
 
 namespace KurumsalWeb.Controllers
 {
@@ -86,6 +87,13 @@ namespace KurumsalWeb.Controllers
                 return View();
             
         }
+
+        public ActionResult Blog()
+        {
+            //kategoriye bağımlı olduğu için kategoriyi de include olarak ekleme yapıyoruz
+            return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
+        }
+
         public ActionResult FooterPartial()
         {
 
