@@ -11,6 +11,7 @@ namespace KurumsalWeb.Models.Model
     {
         public int BlogId { get; set; }
         public string Baslik { get; set; }
+       
         public string İcerik { get; set; }
         public string ResimURL { get; set; }
         //Sonraki 2 satır foregin key olarak yapılandırmka içn yapıldı 

@@ -94,6 +94,12 @@ namespace KurumsalWeb.Controllers
             return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
         }
 
+        public ActionResult BlogKategoriPartial()
+        {
+           // db.Configuration.LazyLoadingEnabled = false;//bak
+
+            return PartialView(db.Kategori.Include("Blogs").ToList().OrderBy(x => x.KategoriAd));
+        }
         public ActionResult FooterPartial()
         {
 

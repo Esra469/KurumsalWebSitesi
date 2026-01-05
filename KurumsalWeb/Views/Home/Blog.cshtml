@@ -1,0 +1,89 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Model.Blog>
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+<div class="page-title dark-background">
+    <div class="container position-relative">
+        <h1>Blog</h1>
+        <p>Blog yazılarımızı buradan okuyabilirsiniz.</p>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="current">Blog</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+<section class="blog-categories section">
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6 col-md-8">
+
+                <div class="widget center text-center shadow-sm p-4 bg-white rounded">
+
+                    @{
+                        Html.RenderAction("BlogKategoriPartial", "Home");
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="blog-posts" class="blog-posts section">
+
+    <div class="container">
+        <div class="row gy-4">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article>
+
+                        <div class="post-img">
+                            <img src="@item.ResimURL" alt="@item.Baslik" class="img-fluid w-100" style="height: 250px; object-fit: contain; background-color: #f8f9fa;">
+
+                        </div>
+
+                        <p class="post-category">@item.Baslik</p>
+
+                        <h2 class="title">
+                            <a href="/Home/BlogDetay/@item.BlogId">@item.İcerik</a>
+                        </h2>
+
+                        <div class="d-flex align-items-center">
+                            <img src="/Content/SiteLayout/assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                            <div class="post-meta">
+                                <p class="post-author">Maria Doe</p>
+                                <p class="post-date">
+                                    <time datetime="2022-01-01">@DateTime.Now.Year</time>
+                                </p>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+</section>
