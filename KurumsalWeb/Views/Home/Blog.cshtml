@@ -1,4 +1,9 @@
-﻿@model IEnumerable<KurumsalWeb.Models.Model.Blog>
+﻿@*Burada da paget list kullanacağımız için IENUMERABLE değiiştirdik.*@ 
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<KurumsalWeb.Models.Model.Blog>
 @{
     ViewBag.Title = "Blog";
     Layout = "~/Views/Shared/_SiteLayout.cshtml";

@@ -9,6 +9,8 @@ using System.Web.Helpers;
 using System.Web.Management;
 using System.Web.Mvc;
 using System.EnterpriseServices.Internal;
+using PagedList;
+using PagedList.Mvc;
 
 namespace KurumsalWeb.Controllers
 {
@@ -16,10 +18,12 @@ namespace KurumsalWeb.Controllers
     {
         private KurumsalDBContext db = new KurumsalDBContext();
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int Sayfa=1)
         {
-            ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
-            
+            //ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
+            //paged list ekledik. ekleme yaptıktan sonra toList kullanmayacağız pagetlist kullanacağız.
+            ViewBag.Hizmetler = db.Hizmet.ToPagedList(Sayfa,5).OrderByDescending(x => x.HizmetId);
+
 
             return View();
         }
