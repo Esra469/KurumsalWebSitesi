@@ -20,9 +20,8 @@ namespace KurumsalWeb.Controllers
         // GET: Home
         public ActionResult Index(int Sayfa=1)
         {
-            //ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
-            //paged list ekledik. ekleme yaptıktan sonra toList kullanmayacağız pagetlist kullanacağız.
-            ViewBag.Hizmetler = db.Hizmet.ToPagedList(Sayfa,5).OrderByDescending(x => x.HizmetId);
+            ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
+            
 
 
             return View();
@@ -92,10 +91,12 @@ namespace KurumsalWeb.Controllers
             
         }
 
-        public ActionResult Blog()
+        public ActionResult Blog(int Sayfa=1)
         {
             //kategoriye bağımlı olduğu için kategoriyi de include olarak ekleme yapıyoruz
-            return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
+            //return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
+            //pagetlist ile düzenlendikten sonra
+            return View(db.Blog.Include("Kategori").OrderByDescending(x => x.BlogId).ToPagedList(Sayfa,6));
         }
 
         public ActionResult BlogKategoriPartial()
