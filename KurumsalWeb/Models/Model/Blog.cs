@@ -17,5 +17,7 @@ namespace KurumsalWeb.Models.Model
         //Sonraki 2 satır foregin key olarak yapılandırmka içn yapıldı 
         public int KategoriId { get; set; }
         public Kategori Kategori { get; set; }
+
+        public ICollection<Yorum> Yorums { get; set; }//yorum tablosunun bir koleksiyonunu içeriyor demek oluyor bu .
     }
 }

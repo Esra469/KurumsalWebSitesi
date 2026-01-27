@@ -95,8 +95,16 @@ namespace KurumsalWeb.Controllers
         {
             //kategoriye bağımlı olduğu için kategoriyi de include olarak ekleme yapıyoruz
             //return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
+
+
             //pagetlist ile düzenlendikten sonra
             return View(db.Blog.Include("Kategori").OrderByDescending(x => x.BlogId).ToPagedList(Sayfa,6));
+        }
+
+        public ActionResult BlogDetay(int? id)
+        {
+            var b=db.Blog.Include("Kategori").Where(x=>x.BlogId==id).SingleOrDefault();
+            return View(b);
         }
 
         public ActionResult BlogKategoriPartial()
