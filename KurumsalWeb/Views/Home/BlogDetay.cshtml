@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KurumsalWeb.Models.Model.Blog>
+﻿@model KurumsalWeb.Models.Model.Blog
 
 @{
     ViewBag.Title = "BlogDetay";
@@ -78,29 +78,29 @@
 
                         <form action="">
 
-                            <h4>Post Comment</h4>
-                            <p>Your email address will not be published. Required fields are marked * </p>
+                            <h4>Yorum yap</h4>
+                           
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                                    <input  type="text" id="adsoyad" class="form-control" placeholder="Adınız">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                                    <input  type="email" id="eposta" class="form-control" placeholder="Email adresiniz">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col form-group">
-                                    <input name="website" type="text" class="form-control" placeholder="Your Website">
+                                    <input  type="text" id="icerik" class="form-control" placeholder="İçerik">
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div>  
+                            <div class="row">   
                                 <div class="col form-group">
-                                    <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
+                                    <textarea name="comment" class="form-control" placeholder="Yorumunuz"></textarea>
                                 </div>
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                                <button id="gender" type="submit" class="btn btn-primary">Post Yorum</button>
                             </div>
 
                         </form>
@@ -197,3 +197,36 @@
 
 </main>
 
+
+
+<!--#(diez) etiketi direkt yakalamak için önüne konur -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gender").click(function () {
+            var adisoyadi = $("#adsoyad").val();
+            var epostasi = $("#eposta").val();
+            var yorumunuz = $("icerik").val();
+
+            var blogId = '@(Model != null ? Model.BlogId : 0)';
+            $.ajax({
+                url: '/Home/YorumYap',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    adisoyadi: adisoyadi,
+                    eposta: epostasi,
+                    icerik:yorumunuz,
+                   
+                },
+
+                
+                success: function (data) {
+                    alert(adisoyadi +" - yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.")
+                }
+            })
+        });
+    })
+
+
+
+</script>

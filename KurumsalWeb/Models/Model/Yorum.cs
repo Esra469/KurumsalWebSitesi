@@ -20,6 +20,7 @@ namespace KurumsalWeb.Models.Model
         [DisplayName("Yorumunuz")]
         public string  Icerik { get; set; }
 
+        public bool Onay { get; set; }
         public int? BlogId { get; set; }
         public Blog Blog { get; set; }
 

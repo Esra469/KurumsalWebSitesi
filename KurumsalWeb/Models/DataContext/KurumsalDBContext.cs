@@ -26,5 +26,7 @@ namespace KurumsalWeb.Models.DataContext
         public DbSet<Kategori> Kategori { get; set; }
         public DbSet<Kimlik> Kimlik { get; set; }
         public DbSet<Slider> Slider { get; set; }//yeni bir tablo ekelyeceğin zamn burdan da güncellem yapmayı unutma. aynı zammanda model ksımına da tablonun özelliklerini yaz
+        public DbSet<Yorum> Yorum { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.EnterpriseServices.Internal;
 using PagedList;
 using PagedList.Mvc;
+using KurumsalWeb.Models.Model;
 
 namespace KurumsalWeb.Controllers
 {
@@ -103,9 +104,38 @@ namespace KurumsalWeb.Controllers
 
         public ActionResult BlogDetay(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             var b=db.Blog.Include("Kategori").Where(x=>x.BlogId==id).SingleOrDefault();
+
+            if (b == null)
+            {
+                return HttpNotFound(); // 404 Sayfa Bulunamadı hatası döner
+            }
             return View(b);
         }
+        [HttpPost]
+        //Yorum sayfasında yorum yapılabilmesi için
+        public JsonResult YorumYap(String adsoyad,String eposta,string icerik,int blogid)
+        {
+            if(icerik==null)
+            {
+                return Json(true,JsonRequestBehavior.AllowGet); 
+            }
+            db.Yorum.Add(new Yorum { 
+                AdSoyad = adsoyad, 
+                Eposta = eposta, 
+                Icerik = icerik, 
+                BlogId = blogid,
+                Onay=false
+            });
+            db.SaveChanges();
+
+            return Json(false,JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult BlogKategoriPartial()
         {
