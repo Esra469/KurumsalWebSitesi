@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="text-center">
-                                <button id="gender" type="submit" class="btn btn-primary">Post Yorum</button>
+                                <button id="gonder" type="button" class="btn btn-primary">Post Yorum</button>
                             </div>
 
                         </form>
@@ -202,26 +202,26 @@
 <!--#(diez) etiketi direkt yakalamak için önüne konur -->
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#gender").click(function () {
+        $("#gonder").click(function () {
             var adisoyadi = $("#adsoyad").val();
             var epostasi = $("#eposta").val();
-            var yorumunuz = $("icerik").val();
+            var yorumunuz = $("#icerik").val();
 
-            var blogId = '@(Model != null ? Model.BlogId : 0)';
-            $.ajax({
+            
+            $.ajax({ 
                 url: '/Home/YorumYap',
                 type: 'POST',
                 dataType: 'json',
                 data: {
                     adisoyadi: adisoyadi,
                     eposta: epostasi,
-                    icerik:yorumunuz,
-                   
+                    icerik: yorumunuz,
+                    blogid:@Model.BlogId,
                 },
 
                 
                 success: function (data) {
-                    alert(adisoyadi +" - yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.")
+                    alert("yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.");
                 }
             })
         });
