@@ -104,11 +104,19 @@ namespace KurumsalWeb.Controllers
 
         public ActionResult BlogDetay(int? id)
         {
-           
-            var b=db.Blog.Include("Kategori").Where(x=>x.BlogId==id).SingleOrDefault();
 
-            
+            if (id == null) return RedirectToAction("Blog");
+
+            var b = db.Blog.Include("Kategori").SingleOrDefault(x => x.BlogId == id.Value);
+            if (b == null) return RedirectToAction("Blog");
+
             return View(b);
+
+
+            //var b=db.Blog.Include("Kategori").Where(x=>x.BlogId==id).SingleOrDefault();
+
+
+            //return View(b);
         }
        
         //Yorum sayfasında yorum yapılabilmesi için
