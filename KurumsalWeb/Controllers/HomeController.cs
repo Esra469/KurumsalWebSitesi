@@ -107,37 +107,19 @@ namespace KurumsalWeb.Controllers
 
             if (id == null) return RedirectToAction("Blog");
 
-            var b = db.Blog.Include("Kategori").SingleOrDefault(x => x.BlogId == id.Value);
+            var b = db.Blog.Include("Kategori").Include("Yorums").SingleOrDefault(x => x.BlogId == id.Value);
             if (b == null) return RedirectToAction("Blog");
 
             return View(b);
 
 
-            //var b=db.Blog.Include("Kategori").Where(x=>x.BlogId==id).SingleOrDefault();
-
-
-            //return View(b);
+         
         }
        
         //Yorum sayfasında yorum yapılabilmesi için
         public JsonResult YorumYap(String adsoyad,String eposta,string icerik,int blogid)
         {
-            //if(icerik==null)
-            //{
-            //    return Json(true,JsonRequestBehavior.AllowGet); 
-            //}
-            //db.Yorum.Add(new Yorum { 
-            //    AdSoyad = adsoyad, 
-            //    Eposta = eposta, 
-            //    Icerik = icerik, 
-            //    BlogId = blogid,
-            //    Onay=false
-            //});
-            //db.SaveChanges();
-
-            //return Json(false,JsonRequestBehavior.AllowGet);
-
-            // Basit validasyon
+         
             if (string.IsNullOrWhiteSpace(adsoyad) ||
                 string.IsNullOrWhiteSpace(eposta) ||
                 string.IsNullOrWhiteSpace(icerik) ||
