@@ -20,13 +20,12 @@
             </nav>
         </div>
     </div><!-- End Page Title -->
-    
 
-   
+
+
     <div class="container">
         <div class="row">
 
-            <!-- SOL: Blog Detay -->
             <div class="col-lg-8">
 
                 <section id="blog-details" class="blog-details section">
@@ -64,7 +63,7 @@
                     </div>
                 </section>
 
-                <!-- Yorum Formu (senin formun) -->
+
                 <section id="comment-form" class="comment-form section">
                     <div class="container">
                         <form>
@@ -150,37 +149,77 @@
 
 </main>
 
-
-
 <!--(diez) etiketi direkt yakalamak için önüne konur -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#gonder").click(function () {
-            var adisoyadi = $("#adsoyad").val();
-            var epostasi = $("#eposta").val();
-            var yorumunuz = $("#icerik").val();
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $("#gonder").click(function () {
+                var adisoyadi = $("#adsoyad").val();
+                var epostasi = $("#eposta").val();
+                var yorumunuz = $("#icerik").val();
 
-            var blogId = @(Model != null ? Model.BlogId : 0);
+                var blogId = @(Model != null ? Model.BlogId : 0);
 
-            $.ajax({
-                url: '/Home/YorumYap',
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    adisoyadi: adisoyadi, 
-                    eposta: epostasi,
-                    icerik: yorumunuz,
-                    blogid:@Model.BlogId,
-                },
+                $.ajax({
+                    url: '/Home/YorumYap',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        adisoyadi: adisoyadi,
+                        eposta: epostasi,
+                        icerik: yorumunuz,
+                        blogid:@Model.BlogId,
+                    },
 
 
-                success: function (data) {
-                    alert("yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.");
-                }
-            })
+                    success: function (data) {
+                        alert("yorumunuz eklendi, kontrol edildikten sonra yayınlanacaktır.");
+                    }
+                })
+            });
+        })
+    </script>*@
+
+
+
+     
+
+@section scripts{
+    <script>
+$(function () {
+
+    console.log("BlogDetay script çalıştı");
+
+    var blogId = @Model.BlogId;
+
+    $("#gonder").on("click", function () {
+
+        console.log("butona basıldı");
+
+        var adisoyadi = $("#adsoyad").val();
+        var epostasi  = $("#eposta").val();
+        var yorumunuz = $("#icerik").val();
+
+        $.ajax({
+            url: '@Url.Action("YorumYap", "Home")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                adsoyad: adisoyadi,
+                eposta: epostasi,
+                icerik: yorumunuz,
+                blogid: blogId
+            },
+            success: function (sonuc) {
+                console.log("success:", sonuc);
+                alert(sonuc.message || "Lütfen tüm alanları doldurun");
+            },
+            error: function (xhr) {
+                console.log("error:", xhr.status, xhr.responseText);
+                alert("Hata: " + xhr.status);
+            }
         });
-    })
+    });
 
-
-
-</script>
+});
+    </script>
+}

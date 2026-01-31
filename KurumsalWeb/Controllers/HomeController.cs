@@ -122,20 +122,50 @@ namespace KurumsalWeb.Controllers
         //Yorum sayfasında yorum yapılabilmesi için
         public JsonResult YorumYap(String adsoyad,String eposta,string icerik,int blogid)
         {
-            if(icerik==null)
+            //if(icerik==null)
+            //{
+            //    return Json(true,JsonRequestBehavior.AllowGet); 
+            //}
+            //db.Yorum.Add(new Yorum { 
+            //    AdSoyad = adsoyad, 
+            //    Eposta = eposta, 
+            //    Icerik = icerik, 
+            //    BlogId = blogid,
+            //    Onay=false
+            //});
+            //db.SaveChanges();
+
+            //return Json(false,JsonRequestBehavior.AllowGet);
+
+            // Basit validasyon
+            if (string.IsNullOrWhiteSpace(adsoyad) ||
+                string.IsNullOrWhiteSpace(eposta) ||
+                string.IsNullOrWhiteSpace(icerik) ||
+                blogid <= 0)
             {
-                return Json(true,JsonRequestBehavior.AllowGet); 
+                return Json(new { ok = false });
             }
-            db.Yorum.Add(new Yorum { 
-                AdSoyad = adsoyad, 
-                Eposta = eposta, 
-                Icerik = icerik, 
+
+            // Blog var mı kontrolü (opsiyonel ama iyi)
+            var blogVarMi = db.Blog.Any(x => x.BlogId == blogid);
+            if (!blogVarMi)
+                return Json(new { ok = false, message = "Blog bulunamadı." });
+
+            db.Yorum.Add(new Yorum
+            {
+                AdSoyad = adsoyad,
+                Eposta = eposta,
+                Icerik = icerik,
                 BlogId = blogid,
-                Onay=false
+                Onay = false
             });
+
             db.SaveChanges();
 
-            return Json(false,JsonRequestBehavior.AllowGet);
+            return Json(new { ok = true, message = "Yorum kaydedildi. Onay sonrası yayınlanacak." });
+
+
+
         }
 
 
