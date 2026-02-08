@@ -19,8 +19,13 @@ namespace KurumsalWeb.Controllers
     {
         private KurumsalDBContext db = new KurumsalDBContext();
         // GET: Home
+        [Route("")]
+        [Route("Anasayfa")] /*arama çubuğunda artık bu görünür.nasıl çalışmasını istiyorsak o şekilde belirtiyoruz.*/
+       
         public ActionResult Index(int Sayfa=1)
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
+
             ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
             
 
@@ -37,18 +42,25 @@ namespace KurumsalWeb.Controllers
         {
             return View(db.Hizmet.ToList());
         }
+        [Route("Hakkimizda")]
         public ActionResult Hakkimizda()
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
+
             return View(db.Hakkimizda.SingleOrDefault());
         
         }
-      public ActionResult Hizmetlerimiz()
+        [Route("Hizmetlerimiz")]
+        public ActionResult Hizmetlerimiz()
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
             return View(db.Hizmet.ToList().OrderByDescending(x=>x.HizmetId));
         }
 
+        [Route("iletisim")]
         public ActionResult Iletisim()
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
             return View(db.iletisim.SingleOrDefault());
         }
 
@@ -92,8 +104,10 @@ namespace KurumsalWeb.Controllers
             
         }
 
+        [Route("Blog")]
         public ActionResult Blog(int Sayfa=1)
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
             //kategoriye bağımlı olduğu için kategoriyi de include olarak ekleme yapıyoruz
             //return View(db.Blog.Include("Kategori").ToList().OrderByDescending(x=>x.BlogId));
 
@@ -103,6 +117,7 @@ namespace KurumsalWeb.Controllers
         }
         public ActionResult KategoriBlog(int id,int Sayfa=1)
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
             //Her blog için kategorilere ayrımı göstereceğiz.
             var b = db.Blog.Include("Kategori").OrderByDescending(x=>x.BlogId).Where(x => x.Kategori.KategoriId == id).ToPagedList(Sayfa,5);
             return View(b);
@@ -165,6 +180,8 @@ namespace KurumsalWeb.Controllers
         }
         public ActionResult FooterPartial()
         {
+
+           
 
             ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
             var iletisim = db.iletisim.FirstOrDefault();//model olarak alacağımız için viewbag olarak belirtemeyiz.
