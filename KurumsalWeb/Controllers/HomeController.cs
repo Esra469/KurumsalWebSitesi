@@ -104,7 +104,7 @@ namespace KurumsalWeb.Controllers
             
         }
 
-        [Route("Blog")]
+        [Route("BlogPost")]
         public ActionResult Blog(int Sayfa=1)
         {
             ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
@@ -115,6 +115,8 @@ namespace KurumsalWeb.Controllers
             //pagetlist ile düzenlendikten sonra
             return View(db.Blog.Include("Kategori").OrderByDescending(x => x.BlogId).ToPagedList(Sayfa,6));
         }
+
+        [Route("BlogPost/{kategoriad}/{id:int}")]
         public ActionResult KategoriBlog(int id,int Sayfa=1)
         {
             ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
@@ -124,7 +126,7 @@ namespace KurumsalWeb.Controllers
             return View(b);
         }
 
-        [Route("Blog/{baslik}-{id:int}")]
+        [Route("BlogPost/{baslik}-{id:int}")]
         public ActionResult BlogDetay(int? id)
         {
             ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
@@ -171,10 +173,9 @@ namespace KurumsalWeb.Controllers
             return Json(new { ok = true, message = "Yorum kaydedildi. Onay sonrası yayınlanacak." });
 
 
-
         }
 
-
+        
         public ActionResult BlogKategoriPartial()
         {
            // db.Configuration.LazyLoadingEnabled = false;//bak
