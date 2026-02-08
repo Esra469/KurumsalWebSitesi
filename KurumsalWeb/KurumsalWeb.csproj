@@ -1335,6 +1335,7 @@
     <Content Include="Views\Yorum\Details.cshtml" />
     <Content Include="Views\Yorum\Edit.cshtml" />
     <Content Include="Views\Yorum\Index.cshtml" />
+    <Content Include="Views\Home\KategoriBlog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,159 @@
+﻿@model IPagedList<KurumsalWeb.Models.Model.Blog>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "KategoriBlog";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<h2>KategoriBlog</h2>
+
+<div class="page-title dark-background">
+    <div class="container position-relative">
+        <h1>Kategori Blog</h1>
+        <p>Blog kategorilerine buradan ulaşabilirsiniz.</p>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a href="/Home/Index">Ana Sayfa</a></li>
+                <li class="current">Kategori Blog</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+
+<section class="blog-categories section">
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-6 col-md-8">
+
+                <div class="widget center text-center shadow-sm p-4 bg-white rounded">
+
+
+                    @{
+                        Html.RenderAction("BlogKategoriPartial", "Home");
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="blog-posts" class="blog-posts section">
+
+    <div class="container">
+        <div class="row gy-4">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-lg-4 col-md-6">
+
+                    <article>
+
+                        <div class="post-img">
+                            <img src="@item.ResimURL" alt="@item.Baslik" class="img-fluid w-100" style="height: 250px; object-fit: contain; background-color: #f8f9fa;">
+
+                        </div>
+
+                        <p class="post-category">@item.Baslik</p>
+
+                        <h2 class="title">
+                            <a href="/Home/BlogDetay/@item.BlogId">@item.İcerik</a>
+                        </h2>
+
+                        <div class="d-flex align-items-center">
+                            <img src="/Content/SiteLayout/assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                            <div class="post-meta">
+                                <p class="post-author">Maria Doe</p>
+                                <p class="post-date">
+                                    <time datetime="2022-01-01">@DateTime.Now.Year</time>
+                                </p>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+</section>
+
+
+<section id="blog-pagination" class="blog-pagination section">
+
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            @Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Blog", new { Sayfa }),
+            new PagedListRenderOptions
+           {
+          LiElementClasses = new List<string> { "page-item" },
+          UlElementClasses = new List<string> { "pagination justify-content-center" },
+          ContainerDivClasses = new List<string> { "pagination-container" }
+      })
+        </div>
+    </div>
+
+</section>
+
+
+
+<style>
+    /* 1. Kapsayıcıyı Görünür Yap */
+    .pagination-container {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-top: 30px !important;
+    }
+
+    /* 2. Listeyi Yan Yana Getir */
+    .pagination {
+        display: inline-flex !important;
+        padding-left: 0 !important;
+        list-style: none !important;
+        gap: 5px !important; /* Kutular arası boşluk */
+    }
+
+        /* 3. Sayfa Numarası Kutularını Boya*/
+        .pagination li a,
+        .pagination li span {
+            background-color: #fff !important; /* Arka plan Beyaz */
+            color: #0026ff !important; /* Yazı Turuncu */
+            border: 1px solid #0026ff !important; /* Kenarlık Turuncu */
+            padding: 10px 15px !important;
+            text-decoration: none !important;
+            border-radius: 5px !important;
+            font-weight: bold !important;
+            display: inline-block !important; /* Görünürlüğü garanti et */
+            visibility: visible !important; /* Görünürlüğü garanti et */
+        }
+
+        /* 4. Aktif Olan Sayfa */
+        .pagination li.active span {
+            background-color: #0026ff !important; /* Arka plan Turuncu */
+            color: #fff !important; /* Yazı Beyaz */
+            border-color: #0026ff !important;
+        }
+
+        /* 5. Mouse ile üzerine gelince */
+        .pagination li a:hover {
+            background-color: #eb5d1e !important;
+            color: #fff !important;
+        }
+</style>

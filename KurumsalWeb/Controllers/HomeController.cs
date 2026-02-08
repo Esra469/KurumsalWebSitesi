@@ -101,6 +101,12 @@ namespace KurumsalWeb.Controllers
             //pagetlist ile düzenlendikten sonra
             return View(db.Blog.Include("Kategori").OrderByDescending(x => x.BlogId).ToPagedList(Sayfa,6));
         }
+        public ActionResult KategoriBlog(int id,int Sayfa=1)
+        {
+            //Her blog için kategorilere ayrımı göstereceğiz.
+            var b = db.Blog.Include("Kategori").OrderByDescending(x=>x.BlogId).Where(x => x.Kategori.KategoriId == id).ToPagedList(Sayfa,5);
+            return View(b);
+        }
 
         public ActionResult BlogDetay(int? id)
         {
