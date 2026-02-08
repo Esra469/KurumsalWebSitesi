@@ -3,12 +3,12 @@
 @using PagedList;
 @using PagedList.Mvc;
 
+@using KurumsalWeb.Helper
 @{
     ViewBag.Title = "KategoriBlog";
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
-<h2>KategoriBlog</h2>
 
 <div class="page-title dark-background">
     <div class="container position-relative">
@@ -68,7 +68,7 @@
                         <p class="post-category">@item.Baslik</p>
 
                         <h2 class="title">
-                            <a href="/Home/BlogDetay/@item.BlogId">@item.İcerik</a>
+                            <a href="/Blog/@SeoHelper.ToSeoUrl(item.Baslik).ToLower()-@item.BlogId">@item.İcerik</a>
                         </h2>
 
                         <div class="d-flex align-items-center">

@@ -118,13 +118,16 @@ namespace KurumsalWeb.Controllers
         public ActionResult KategoriBlog(int id,int Sayfa=1)
         {
             ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
+
             //Her blog için kategorilere ayrımı göstereceğiz.
             var b = db.Blog.Include("Kategori").OrderByDescending(x=>x.BlogId).Where(x => x.Kategori.KategoriId == id).ToPagedList(Sayfa,5);
             return View(b);
         }
 
+        [Route("Blog/{baslik}-{id:int}")]
         public ActionResult BlogDetay(int? id)
         {
+            ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
 
             if (id == null) return RedirectToAction("Blog");
 
