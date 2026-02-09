@@ -27,8 +27,7 @@ namespace KurumsalWeb.Controllers
             ViewBag.Kimlik = db.Kimlik.SingleOrDefault();
 
             ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
-            
-
+           
 
             return View();
         }
@@ -184,8 +183,6 @@ namespace KurumsalWeb.Controllers
         }
         public ActionResult FooterPartial()
         {
-
-           
 
             ViewBag.Hizmetler = db.Hizmet.ToList().OrderByDescending(x => x.HizmetId);
             var iletisim = db.iletisim.FirstOrDefault();//model olarak alacağımız için viewbag olarak belirtemeyiz.

@@ -100,7 +100,7 @@
 
     <div class="container">
         <div class="d-flex justify-content-center">
-            @Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("BlogPost", new { Sayfa }),
+            @Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Blog", new { Sayfa }),
       new PagedListRenderOptions
            {
           LiElementClasses = new List<string> { "page-item" },
