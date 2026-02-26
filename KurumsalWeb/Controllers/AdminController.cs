@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace KurumsalWeb.Controllers
@@ -21,6 +22,13 @@ namespace KurumsalWeb.Controllers
         [Route("yonetimpaneli")]
         public ActionResult Index()
         {
+            ViewBag.BlogSay = db.Blog.Count();
+            ViewBag.KategoriSay=db.Kategori.Count();
+            ViewBag.HizmetSay=db.Hizmet.Count();
+            ViewBag.YorumSay=db.Yorum.Count();
+
+
+
             ViewBag.YorumOnay = db.Yorum.Where(x => x.Onay == false).Count();
            var sorgu=db.Kategori.ToList();
            return View(sorgu);
@@ -54,6 +62,26 @@ namespace KurumsalWeb.Controllers
             Session.Abandon();
 
             return RedirectToAction("Login", "Admin");
+        }
+
+        public ActionResult Adminler()
+        {
+            return View(db.Admin.ToList());
+        }
+        public ActionResult Create()
+        {
+            return View();
+        
+        }
+        public ActionResult Create(Admin admin,string sifre,string eposta)
+        {
+            if (ModelState.IsValid)
+            {
+                admin.Sifre = Crypto.Hash(sifre,"MD5"); /*MD5 olarak şifreyi kaydet demek*/
+                db.Admin.Add(admin);
+                return RedirectToAction("Adminler");
+            }
+            return View();
         }
     }
 }
