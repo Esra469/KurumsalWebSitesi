@@ -43,8 +43,9 @@ namespace KurumsalWeb.Controllers
         [HttpPost]
         public ActionResult Login(Admin admin)
         {
+
             var login=db.Admin.Where(x=>x.Eposta==admin.Eposta).SingleOrDefault();
-            if (login.Eposta == admin.Eposta && login.Sifre==admin.Sifre)
+            if (login.Eposta == admin.Eposta && login.Sifre==Crypto.Hash(admin.Sifre, "MD5"))/* admin şifresini örneğin 1234 ken cryptoladı*/ 
             {
                 Session["adminid"] = login.AdminId;
                 Session["eposta"] = login.Eposta;
@@ -80,6 +81,7 @@ namespace KurumsalWeb.Controllers
             {
                 admin.Sifre = Crypto.Hash(sifre,"MD5"); /*MD5 olarak şifreyi kaydet demek*/
                 db.Admin.Add(admin);
+                db.SaveChanges();
                 return RedirectToAction("Adminler");
             }
             return View(admin);
@@ -103,6 +105,17 @@ namespace KurumsalWeb.Controllers
                 return RedirectToAction("Adminler");
             }
             return View(admin);
+        }
+        public ActionResult Delete(int id)
+        {
+            var a = db.Admin.Where(x => x.AdminId == id).SingleOrDefault();
+            if (a != null)
+            {
+                db.Admin.Remove(a);
+                db.SaveChanges();
+                return RedirectToAction("Adminler");
+            }
+            return View();  
         }
     }
 }
